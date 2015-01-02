@@ -12,7 +12,7 @@ package org.muzza.tdd;
  */
 class Dollar {
     
-    int amount = 10;
+   private int amount = 10;
     
     Dollar(int amount) {
         this.amount = amount;
@@ -42,7 +42,5 @@ class Dollar {
         
         return this.amount == other.amount;
     }
-    
-    
 
 }
