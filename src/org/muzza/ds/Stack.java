@@ -27,7 +27,7 @@ public class Stack {
         
 //        stack.push(22);
         
-        System.out.println("Element Pulled : " + stack.pull());
+        System.out.println("Element Pulled : " + stack.pop());
     }
     
     public void push(int num){
@@ -40,7 +40,7 @@ public class Stack {
         }
     }
     
-    public int pull(){
+    public int pop(){
         int val = 0;
         if(tos >= 0) {
           val  = values[tos];
