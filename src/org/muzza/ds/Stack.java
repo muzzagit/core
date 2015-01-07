@@ -10,51 +10,62 @@ package org.muzza.ds;
  *
  * @author M Mozammil
  */
-public class Stack {
-    int[] values;
-    int tos = -1;
+public class Stack<E> {
+    private Object[] stack;
+    private int tos = -1;
+    int size;
     
-    public Stack(int length) {
-        values = new int[length];
+    public Stack() {
+        this(10);
     }
     
-    public static void main(String[] args) {
-        
-        Stack stack = new Stack(1000001);
-        for(int i = 0; i < 1000000; i++){
-//            stack.push(i);
-        }
-        
-//        stack.push(22);
-        
-        System.out.println("Element Pulled : " + stack.pop());
+    public Stack(int size) {
+        stack = new Object[size];
+        this.size = size; 
     }
+    
+//    public static void main(String[] args) {
+//        
+//        Stack stack = new Stack(1000001);
+//        for(int i = 0; i < 1000000; i++){
+//        }
+//        
+//        System.out.println("Element Pulled : " + stack.pop());
+//    }
     
     public void push(int num){
         tos++;
         
-        if(tos <= values.length){
-            values[tos] = num;
+        if(tos <= size -1){
+            stack[tos] = num;
         } else {
-            throw new ArrayIndexOutOfBoundsException("Error : tos pointer maximized");
+            throw new ArrayIndexOutOfBoundsException("Error : Stack Overflow");
         }
     }
     
-    public int pop(){
-        int val = 0;
+    public E pop(){
+        E val = null;
         if(tos >= 0) {
-          val  = values[tos];
-            tos--;
+          val  = (E) stack[tos];
+          tos--;
         } else {
-            throw new IllegalStateException("Error : no element");
+            throw new IllegalStateException("Error : Stack Empty");
         }
         
         return val;
     }
     
+    
+    public E peek() {
+        if(tos >= 0)
+            return (E) stack[tos];
+        else
+            throw new IllegalStateException("Error : Stack Empty");
+    }
+    
     public void traverse(){
-        for(int i = 0; i<=tos; i++) {
-            System.out.println(values[i]);
+        for(Object element: stack) {
+            System.out.println(element);
         }
     }
     
