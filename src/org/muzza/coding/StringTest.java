@@ -18,9 +18,15 @@ public class StringTest {
     
     
   public static void main(String[] args) {
-     calculateSum();
+//     calculateSum();
+      createMemoryLeak();
   }
   
+  
+  private static void createMemoryLeak() {
+      int size = 1000000000;
+      char[] str = new char[size];
+  }
   public static void calculateSum() {
       long sum = 0;
       long start = System.currentTimeMillis();
@@ -47,4 +53,16 @@ public class StringTest {
       
       System.out.println("String : " + parentS);
   }
+  
+  
+}
+
+
+class StringC {
+    
+  String id = "";
+  String name = "";
+ 
+ 
+    
 }
